@@ -23,7 +23,7 @@ brew update && brew upgrade --cask cola9k1/multibox/multibox
 
 ## 안내서
 
-- [설치와 사용 안내](docs/GUIDE.md): dmg 로 직접 설치하는 방법, iOS(Xcode)와 Android 테스트 준비, 사용법, 자주 겪는 문제
+- [설치와 사용 안내](docs/GUIDE.md): 처음 실행하면(iOS, Android 준비는 앱의 환경 점검 탭이 안내), 사용법, 자주 겪는 문제, dmg 로 직접 설치하는 방법(부록)
 - [릴리즈](https://github.com/cola9k1/homebrew-multibox/releases): 버전별 dmg 와 변경 내용
 
 이 저장소는 배포용입니다. 앱은 Apple 의 서명을 받지 않았습니다. Homebrew 로 설치하면 설치 직후 macOS 가 막지 않도록 처리됩니다.
