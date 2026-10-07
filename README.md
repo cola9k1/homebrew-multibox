@@ -7,7 +7,7 @@ QA 용 로컬 디바이스 테스트 앱입니다 (macOS, Apple silicon).
 
 ## 소개 영상
 
-https://github.com/user-attachments/assets/fdc9af34-2128-4f9d-b418-39edfd2e880f
+https://github.com/user-attachments/assets/2f738c44-bb0a-4fb7-85d2-6049f581a72b
 
 설치, 웹 테스트, 앱 테스트, 업데이트 알림, 환경 점검을 2분 24초에 보여 줍니다. 소리는 없고 한글 자막이 있습니다.
 
