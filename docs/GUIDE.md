@@ -4,8 +4,6 @@ QA 용 안내입니다. Apple silicon Mac(M1 이상)에서 쓸 수 있습니다.
 
 ## 1. 설치
 
-### 방법 1. Homebrew (권장)
-
 터미널에 한 줄이면 설치됩니다. "열 수 없음" 안내 없이 바로 열리고, 업데이트도 쉽습니다. Homebrew 가 없다면 https://brew.sh 를 먼저 설치합니다.
 
 ```bash
@@ -16,35 +14,7 @@ brew install --cask cola9k1/multibox/multibox
 
 `/Applications/Multibox.app` 에 설치됩니다. 예전에 dmg 로 `~/Applications` 에 설치한 Multibox 가 있다면 지우세요. 같은 앱이 두 개로 보입니다.
 
-### 방법 2, 3. dmg 를 직접 받기
-
-Homebrew 를 쓰지 않는다면 [릴리즈 페이지](https://github.com/cola9k1/homebrew-multibox/releases/latest)에서 `Multibox-<버전>-arm64.dmg` 를 받아 엽니다. 이 앱은 Apple 의 서명을 받지 않아서, 받은 방법에 따라 처음 열 때 macOS 가 막을 수 있습니다. 브라우저, Slack, AirDrop, 메일로 받은 `.dmg` 에는 "내려받은 파일" 표시가 붙고, 앱을 복사하면 앱 안의 모든 파일에 그 표시가 따라옵니다.
-
-DMG 안의 `먼저 읽어 주세요.txt` 에도 같은 내용이 있습니다.
-
-#### 방법 2. 터미널에 붙여넣기
-
-1. DMG 를 연 채로 터미널 앱을 엽니다. (Spotlight 에서 "터미널" 검색)
-2. 아래 두 줄을 복사해서 붙여넣고 Enter 를 누릅니다. 표시 없이 복사하므로 macOS 가 막지 않습니다.
-
-   ```bash
-   mkdir -p ~/Applications
-   ditto --noqtn "/Volumes/Multibox/Multibox.app" ~/Applications/Multibox.app
-   ```
-
-3. Finder 에서 홈 폴더의 `Applications` 폴더를 열어 Multibox 를 실행합니다. 관리자 권한은 필요 없습니다.
-
-#### 방법 3. 터미널 없이
-
-1. Multibox 를 `Applications` 로 끌어다 놓습니다.
-2. 열어 보면 "열 수 없음" 안내가 나옵니다. 확인을 누릅니다.
-3. 시스템 설정 > 개인정보 보호 및 보안 아래쪽의 `그래도 열기` 를 누르고 로그인 암호를 입력합니다. 이 버튼은 열어 보려고 시도한 직후 약 1시간 동안만 나타납니다. 관리자가 아닌 계정은 관리자 이름과 암호를 물을 수 있습니다.
-
-끌어다 놓은 앱이 방법 3 으로도 열리지 않으면 터미널에서 아래를 실행합니다. 반드시 `-r` 이 들어가야 합니다.
-
-```bash
-xattr -dr com.apple.quarantine /Applications/Multibox.app
-```
+Homebrew 를 쓰지 않는다면 이 문서 맨 아래의 "부록. dmg 로 직접 설치"를 보세요.
 
 ### 업데이트
 
@@ -61,39 +31,19 @@ xattr -dr com.apple.quarantine /Applications/Multibox.app
 
 알림은 앱을 시작할 때 한 번 확인합니다. 인터넷에 연결되어 있지 않으면 알림이 뜨지 않습니다.
 
-## 2. iOS 테스트 준비 (Xcode)
+## 2. 처음 실행하면
 
-iOS 시뮬레이터는 Xcode 가 있어야 쓸 수 있습니다. Command Line Tools 만으로는 안 됩니다. 웹 테스트만 한다면 이 단계는 필요 없습니다.
+웹 테스트는 설치만 하면 바로 쓸 수 있습니다. 앱 테스트(iOS 시뮬레이터, Android 에뮬레이터)는 준비가 필요하고, 그 준비는 앱이 안내합니다.
 
-1. App Store 에서 Xcode 를 설치합니다. Apple ID 로 로그인하면 되고 무료입니다. 용량이 커서 시간이 걸립니다.
-2. Xcode 를 한 번 실행하고 라이선스에 동의한 뒤, 추가 구성요소 설치가 끝나길 기다립니다.
-3. 터미널에서 아래를 차례로 실행합니다. 관리자 암호를 물으면 입력합니다.
+앱 위쪽의 `환경 점검` 탭을 열면 준비된 항목(`준비됨`)과 필요한 항목(`필요`)이 순서대로 보입니다. `필요` 항목을 위에서부터 차례로 해결하세요. 항목마다 해결 방법과 복사해서 붙여넣을 명령이 있고, 명령 옆의 `터미널에서 실행` 을 누르면 같은 탭 아래의 터미널에서 바로 실행됩니다. 관리자 암호(`sudo`)는 그 터미널에 입력하세요. 입력한 글자는 보이지 않는 것이 정상입니다. 끝나면 `다시 점검` 을 누릅니다. 앱 테스트 탭에 기기가 하나도 없을 때도 `환경 점검 열기` 버튼이 같은 곳으로 안내합니다.
 
-   ```bash
-   sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
-   sudo xcodebuild -license accept
-   sudo xcodebuild -runFirstLaunch
-   ```
-4. iOS 시뮬레이터 런타임을 설치합니다. 용량이 크고(약 16GB 이상) 시간이 걸립니다.
+미리 알아 둘 것은 큰 다운로드입니다.
 
-   ```bash
-   xcodebuild -downloadPlatform iOS
-   ```
+- iOS: Xcode(App Store, 무료, 용량이 큼)와 iOS 시뮬레이터 런타임(약 16GB 이상)이 필요합니다. Command Line Tools 만으로는 안 됩니다.
+- Android: Android Studio 가 필요합니다. SDK 도구와 가상 기기는 환경 점검이 순서대로 안내합니다. Android 는 iOS 와 달리 버전마다 시스템 이미지를 내려받아 가상 기기를 따로 만들어야 하고, 만든 가상 기기는 앱 테스트 탭에 버전별로 나타납니다.
+- 웹 테스트만 한다면 이 준비는 필요 없습니다. iOS 나 Android 한쪽만 쓴다면 쓰는 쪽만 준비하면 됩니다.
 
-   Xcode > Settings > Components 에서 설치해도 됩니다.
-
-앱의 `환경 점검` 탭이 어디까지 준비됐는지 보여주고, 부족한 항목마다 복사해서 붙여넣을 명령을 안내합니다.
-명령 옆의 `터미널에서 실행` 을 누르면 같은 탭 아래의 터미널에서 바로 실행됩니다. 관리자 암호(`sudo`)는 그 터미널에 입력하세요. 입력한 글자는 보이지 않는 것이 정상입니다. 명령이 끝나면 `다시 점검` 을 누릅니다.
-
-## 3. Android 테스트 준비
-
-Android 만 테스트한다면 2번(Xcode)은 건너뜁니다.
-
-1. Android Studio 를 설치하고 한 번 실행해 Android SDK 를 내려받습니다. https://developer.android.com/studio
-2. SDK Manager 에서 `Android SDK Platform-Tools`, `Android Emulator`, `Android SDK Build-Tools`, 그리고 `ARM 64 v8a System Image` 를 설치합니다. Apple silicon 은 `arm64-v8a` 이미지만 씁니다.
-3. Device Manager 에서 가상 기기를 하나 만듭니다. Android 는 iOS 와 달리 버전마다 시스템 이미지를 내려받아 가상 기기를 따로 만들어야 합니다. 여러 버전으로 테스트하려면 Android 14, 15, 16 처럼 필요한 버전마다 Create Virtual Device 로 하나씩 만드세요 (이미지는 용량이 커서 시간이 걸립니다). `환경 점검` 탭의 `Android 버전` 항목이 지금 어떤 버전이 있는지 알려줍니다.
-
-## 4. 사용 방법
+## 3. 사용 방법
 
 ### 웹 테스트 (설치만 하면 바로 사용)
 
@@ -155,13 +105,44 @@ Android 만 테스트한다면 2번(Xcode)은 건너뜁니다.
 - 스토어나 TestFlight 에서 받은 앱은 암호화되어 있어 실행되지 않으니 개발팀에 시뮬레이터용 빌드를 요청하세요.
 - Android 는 `arm64-v8a` 가 들어 있는 APK 여야 합니다.
 
-## 5. 자주 겪는 문제
+## 4. 자주 겪는 문제
 
 | 증상 | 확인할 것 |
 |---|---|
-| 앱을 열 때 "열 수 없음" 이 나온다 | dmg 로 설치했다면 1번의 방법 2 로 다시 설치하거나 `xattr -dr` 를 실행합니다. Homebrew 로 설치하면 나오지 않습니다. |
-| `Xcode.app 이 아니라 ... CommandLineTools 가 선택돼 있습니다` | 2번의 `xcode-select -s` 를 실행합니다. |
+| 앱을 열 때 "열 수 없음" 이 나온다 | dmg 로 설치했다면 부록의 방법 1 로 다시 설치하거나 `xattr -dr` 를 실행합니다. Homebrew 로 설치하면 나오지 않습니다. |
+| `Xcode.app 이 아니라 ... CommandLineTools 가 선택돼 있습니다` | `환경 점검` 탭의 Xcode 항목을 따릅니다. 터미널에서 직접 하려면 `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer` 를 실행합니다. |
 | `simctl 을 실행할 수 없습니다` | `sudo xcodebuild -runFirstLaunch` 를 실행합니다. |
-| `설치된 iOS 런타임이 없습니다` | 2번의 `xcodebuild -downloadPlatform iOS` 를 실행합니다. |
+| `설치된 iOS 런타임이 없습니다` | `환경 점검` 탭의 iOS 시뮬레이터 항목을 따릅니다. 터미널에서 직접 하려면 `xcodebuild -downloadPlatform iOS` 를 실행합니다. |
 | `arm64-v8a 시스템 이미지가 없습니다` | SDK Manager 에서 ARM 64 v8a 이미지를 설치합니다. x86_64 이미지는 Apple silicon 에서 쓸 수 없습니다. |
+| `aapt2 를 찾지 못했습니다` | SDK Manager 에서 Android SDK Build-Tools 를 설치합니다. `환경 점검` 탭의 `Android Build-Tools` 항목에서도 확인합니다. |
 | 카메라나 마이크를 쓰는 페이지에서 권한을 묻는다 | 시스템 설정 > 개인정보 보호 및 보안 에서 Multibox 를 허용합니다. |
+
+## 부록. dmg 로 직접 설치
+
+Homebrew 를 쓰지 않는다면 [릴리즈 페이지](https://github.com/cola9k1/homebrew-multibox/releases/latest)에서 `Multibox-<버전>-arm64.dmg` 를 받아 엽니다. 이 앱은 Apple 의 서명을 받지 않아서, 받은 방법에 따라 처음 열 때 macOS 가 막을 수 있습니다. 브라우저, Slack, AirDrop, 메일로 받은 `.dmg` 에는 "내려받은 파일" 표시가 붙고, 앱을 복사하면 앱 안의 모든 파일에 그 표시가 따라옵니다.
+
+DMG 안의 `먼저 읽어 주세요.txt` 에도 같은 내용이 있습니다.
+
+### 방법 1. 터미널에 붙여넣기
+
+1. DMG 를 연 채로 터미널 앱을 엽니다. (Spotlight 에서 "터미널" 검색)
+2. 아래 두 줄을 복사해서 붙여넣고 Enter 를 누릅니다. 표시 없이 복사하므로 macOS 가 막지 않습니다.
+
+   ```bash
+   mkdir -p ~/Applications
+   ditto --noqtn "/Volumes/Multibox/Multibox.app" ~/Applications/Multibox.app
+   ```
+
+3. Finder 에서 홈 폴더의 `Applications` 폴더를 열어 Multibox 를 실행합니다. 관리자 권한은 필요 없습니다.
+
+### 방법 2. 터미널 없이
+
+1. Multibox 를 `Applications` 로 끌어다 놓습니다.
+2. 열어 보면 "열 수 없음" 안내가 나옵니다. 확인을 누릅니다.
+3. 시스템 설정 > 개인정보 보호 및 보안 아래쪽의 `그래도 열기` 를 누르고 로그인 암호를 입력합니다. 이 버튼은 열어 보려고 시도한 직후 약 1시간 동안만 나타납니다. 관리자가 아닌 계정은 관리자 이름과 암호를 물을 수 있습니다.
+
+끌어다 놓은 앱이 방법 2 로도 열리지 않으면 터미널에서 아래를 실행합니다. 반드시 `-r` 이 들어가야 합니다.
+
+```bash
+xattr -dr com.apple.quarantine /Applications/Multibox.app
+```
