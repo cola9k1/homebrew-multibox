@@ -5,6 +5,12 @@ QA 용 로컬 디바이스 테스트 앱입니다 (macOS, Apple silicon).
 - 웹 테스트: 앱 안에 모바일 웹 브라우저를 여러 개 열어 화면 사이즈별로 한 화면에서 동시에 테스트합니다. 브라우저마다 쿠키와 로그인 상태가 따로입니다.
 - 앱 테스트: `.app`, `.ipa`, `.apk` 를 iOS 시뮬레이터와 Android 에뮬레이터에 설치하고 실행합니다.
 
+## 소개 영상
+
+https://github.com/user-attachments/assets/fdc9af34-2128-4f9d-b418-39edfd2e880f
+
+설치부터 웹 테스트, 앱 테스트, 업데이트 알림, 환경 점검까지 2분 24초에 보여 줍니다. 소리는 없고 한글 자막이 있습니다.
+
 ## 설치
 
 Apple silicon Mac(M1 이상)과 [Homebrew](https://brew.sh) 가 필요합니다.
