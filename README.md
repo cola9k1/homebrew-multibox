@@ -15,7 +15,7 @@ brew install --cask cola9k1/multibox/multibox
 
 ## 업데이트
 
-새 버전이 나오면 앱 위쪽에 알림이 뜹니다. `업데이트` 버튼을 누르거나 터미널에서 직접 실행합니다.
+새 버전이 나오면 앱을 열 때 `업데이트 가능` 창이 뜹니다. `업데이트` 버튼을 누르거나 터미널에서 직접 실행합니다.
 
 ```bash
 brew update && brew upgrade --cask cola9k1/multibox/multibox
