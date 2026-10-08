@@ -183,7 +183,7 @@ Homebrew 를 쓰지 않는다면 이 문서 맨 아래의 "부록. dmg 로 직�
 
 ## 부록. dmg 로 직접 설치
 
-Homebrew 를 쓰지 않는다면 [릴리즈 페이지](https://github.com/cola9k1/homebrew-multibox/releases/latest)에서 `Multibox-<버전>-arm64.dmg` 를 받아 엽니다. 이 앱은 Apple 의 서명을 받지 않아서, 받은 방법에 따라 처음 열 때 macOS 가 막을 수 있습니다. 브라우저, Slack, AirDrop, 메일로 받은 `.dmg` 에는 "내려받은 파일" 표시가 붙고, 앱을 복사하면 앱 안의 모든 파일에 그 표시가 따라옵니다.
+Homebrew 를 쓰지 않는다면 [릴리즈 페이지](https://github.com/cola9k1/multibox/releases/latest)에서 `Multibox-<버전>-arm64.dmg` 를 받아 엽니다. 이 앱은 Apple 의 서명을 받지 않아서, 받은 방법에 따라 처음 열 때 macOS 가 막을 수 있습니다. 브라우저, Slack, AirDrop, 메일로 받은 `.dmg` 에는 "내려받은 파일" 표시가 붙고, 앱을 복사하면 앱 안의 모든 파일에 그 표시가 따라옵니다.
 
 DMG 안의 `먼저 읽어 주세요.txt` 에도 같은 내용이 있습니다.
 
